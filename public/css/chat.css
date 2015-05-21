@@ -1,0 +1,32 @@
+#response-name,.info{color:#666}
+body,html{height:100%}
+body{background:url(/images/new-york2.jpg);background-size:cover}
+#partner-video{position:absolute;right:0;bottom:0}
+.chat-box,.container,.media-body,.profile-pic,.submit-msg{position:relative}
+.container{width:auto;height:calc(100% - 50px);overflow:hidden}
+#response-image_url,.chat-box{width:100%}
+.chat-box{margin:0 auto}
+#chat-profile{margin:15px auto auto;padding:15px;height:calc(100% - 30px);background:rgba(99,137,184,.1);overflow:scroll;border:1px solid #eee}
+.info p{border-bottom:solid 1px #DDD;padding:5px 10px}
+.title{text-align:center;margin:10px 0 20px}
+#chat-lists{background-color:#7FB3C4;border-right:1px solid #eee;padding:0;height:100%;opacity:.85}
+.media{border-bottom:solid 1px #9BD;padding:15px;margin-top:0;cursor:pointer}
+.media-object{width:45px;border-radius:100%;-webkit-border-radius:100%}
+.media-body{line-height:10px;top:4px}
+.media-heading{margin-top:0;margin-bottom:5px;font-weight:700;font-size:15px;color:#FFF}
+.active-chat{background:#6389B8;cursor:default}
+.height-fill{height:100%;min-height:100%}
+img{width:100px}
+.profile-pic{width:160px;height:160px;margin:20px auto 10px;display:block;border:5px solid #FFF}
+.profile-name{font-size:17px;font-weight:700;color:#444;margin:0 auto;text-align:center}
+.hidden{display:none}
+.chat-view-wrapper{background:rgba(236,231,219,.5);padding:0 13px;box-shadow:-10px 0 10px -10px rgba(0,0,0,.4)}
+#chat-view,#msg_box{background:rgba(255,255,255,.6)}
+#chat-view{height:calc(100% - 225px);width:100%;margin:15px auto 0;padding-top:20px;overflow:scroll}
+#msg_box{height:180px;margin:15px auto;padding:10px 0}
+.msg-textarea{width:calc(100% - 20px);height:116px!important;margin:0 auto;background:rgba(180,180,180,.1)!important;border:1px solid #f0f0f0}
+.msg{border-bottom:solid 1px #EEE;height:70px}
+.msg img{width:40px}
+.msg-user-name{color:#444;font-size:12px}
+.msg-body{padding:0;font-size:13px;color:#666}
+.submit-msg{right:10px;top:10px}

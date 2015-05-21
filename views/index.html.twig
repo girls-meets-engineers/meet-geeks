@@ -1,0 +1,105 @@
+{% extends "layout.html.twig" %}
+{% block title %}Top Page{% endblock %}
+
+{% block css %}
+{{ parent() }}
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/header-before.css">
+<link rel="stylesheet" href="/css/sign-up-form.css">
+<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+
+{% include "header-before.html.twig" %}
+
+<div id="hero">
+    <div class="signup-well">
+      <p class="hero-message">Perfect match with thousands of single<br />geeks you can relate to.</p>
+      <!-- <button type="button" class="btn btn-danger register">Sign up as Girl</button> -->
+
+      <div class="sign-up-form">
+        <p class="i-am-a">I am a</p>
+        <select id="select-authenticate" class="design-select-box">
+          <option value="woman">Woman</option>
+          <option value="geek">Geek</option>
+        </select>
+        <button id="authenticate" class="btn btn-danger submit-button">Sign Up/Sign In</button>
+      </div>
+
+    </div>
+
+    <a href="#wrapper">
+      <img src="/images/arrow-down.png" alt="why it works?" style="width: 50px; color: #d9534f; z-index: 1000; display: block; position: absolute; opacity: 0.7; bottom: 80px; left: 50%; margin-left: -25px;" />
+      <!--<p style="width: 100%; color: #d9534f; z-index: 1000; display: block; position: absolute; bottom: 65px; text-align: center;">Why it works?<br />▼</p> -->
+    </a>
+</div>
+
+<div id="wrapper">
+  <div class="container">
+    <div style="overflow: hidden;">
+      <h1 class="whyitworks">
+        Why is MEET GEEKS different and better than<br />other online dating sites?
+      </h1>
+      <div class="row">
+        <div class="col-sm-4">
+          <p class="steps">①</p>
+          <h3>Unique Community</h3>
+          <p class="description-of-step">
+            We are exclusively dedicated to connecting Asian urban singles in NYC, LA, SF and more.
+            This means our members already have one important thing in common - they’re looking for
+            someone with a similar cultural background. In other words, you'll find people here you
+            won't find elsewhere.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="steps">②</p>
+          <h3>Geek First</h3>
+          <p class="description-of-step">
+            Our searchable profile options are like no other – because it’s completely catered to
+            the Asian American community. We tell you the age at which the person arrived in the US,
+            languages and dialects spoken, education, occupation and hobbies to help you pinpoint
+            the perfect match. Try searching our database and you will see instantly.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="steps">③</p>
+          <h3>We know what matters to Geeks when it comes to dating.</h3>
+          <p class="description-of-step">
+            We know you’re busy, so we’ve done the hard work for you. We have done extensive research
+            and built our proprietary matching system from scratch, so that we can send you a
+            customized One-to-One match every week. This sophisticated and powerful system is designed
+            to increase your chance of meeting someone special by scouring our database to find the
+            best candidates for you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="width: 100%; height: 50px; background: #000000;">
+</div>
+{% endblock %}
+
+{% block js %}
+{{ parent() }}
+<script src="/js/index.js"></script>
+
+<!-- Dropdown login
+<script src="/js/dropdown-login.js"></script> -->
+
+<!-- get window's hight and set margin of Top -->
+<script src="/js/set-height.js"></script>
+
+<!-- Smooth scroll -->
+<script src="/js/smooth-scroll.js"></script>
+
+<!-- Parallax -->
+<script src="/js/parallax.js"></script>
+
+<!-- Dropdown menu -->
+<script src="/js/easyselectbox.min.js"></script>
+<script src="/js/dropdown-menu.js"></script>
+
+{% endblock %}

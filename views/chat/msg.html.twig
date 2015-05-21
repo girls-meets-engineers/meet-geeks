@@ -1,0 +1,10 @@
+<div class="media msg">\
+  <a class="pull-left" href="#">\
+    <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="' + escapeHTML(jsonobj["image_url"])  + '">\
+  </a>\
+  <div class="media-body">\
+    <small class="pull-right time"><i class="glyphicon glyphicon-time"></i>' + escapeHTML(jsonobj["created_at"]) + '</small>\
+    <h5 class="media-heading msg-user-name">' + escapeHTML(jsonobj["name"]) + '</h5>\
+    <p class="col-lg-10 msg-body">' + escapeHTML(jsonobj["body"]) + '</p>\
+  </div>\
+</div>\

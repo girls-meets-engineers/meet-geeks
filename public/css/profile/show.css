@@ -1,0 +1,5 @@
+#profile-header{height:200px;margin-bottom:10px}
+#profile-header #social-links{position:relative;top:150px}
+dl{width:400px}
+dl dt{font-weight:700;margin-bottom:10px;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#666;border-left-width:7px;border-left-style:solid;border-left-color:#666;padding-left:10px}
+dl dd{margin-bottom:45px;padding-left:50px}

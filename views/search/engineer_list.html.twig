@@ -1,0 +1,12 @@
+{% block engineer_list %}
+<div data-name="{{ engnr["name"]|e }}" data-age="{{ engnr["age"]|e }}" data-money="{{ engnr["money"]|e }}" data-ages='["{{ engnr["age"]|e }}"]' data-moneys='["{{ engnr["money"]|e }}"]' class="picture-item col-xs-4 col-md-3">
+  <div class="thumbnail item">
+    <a href="/profiles/show/{{ engnr["id"]|e }}">
+      <img src="{{ engnr["image_url"]|e }}" class="img-responsive" alt="img">
+      <p class="picture-description">{{ engnr["name"]|e }}<p>
+    </a>
+    <button type="button" id="{{ engnr["id"]|e }}" class="request-button btn btn-default form-control">
+      Request</button>
+  </div>
+</div>
+{% endblock %}

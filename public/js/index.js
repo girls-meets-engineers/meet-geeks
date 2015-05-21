@@ -1,0 +1,1 @@
+!function(){$(document).ready(function(){$(document).on("click","#authenticate",function(){var e=$("#select-authenticate").val();switch(e){case"geek":location.href="/login/github";break;case"woman":location.href="/login/facebook"}})})}();

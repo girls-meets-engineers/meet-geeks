@@ -1,0 +1,32 @@
+div#top-header-content {
+  width: 100%;
+  margin: 0 auto;
+  height: 55px;
+  line-height: 55px;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px rgba(100, 100, 100, 0.5);
+  position: relative;
+  z-index: 50;
+}
+
+div#top-header-nav {
+  margin: 0 auto;
+  width: 980px;
+  display: block;
+}
+
+div#top-header-nav a {
+  display: inline-block;
+  width: 88px;
+  height: 55px;
+  color: #444444;
+  text-align: center;
+  font-size: 1.1em;
+  border: 0px solid #CACACA;
+  margin-right: 10px;
+}
+
+div#top-header-nav a:hover {
+  text-decoration: none;
+  background-color: #E8E8E8;
+}

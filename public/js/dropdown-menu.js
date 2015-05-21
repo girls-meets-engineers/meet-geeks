@@ -1,0 +1,1 @@
+!function(e){e(".design-select-box").easySelectBox({speed:200})}(jQuery);

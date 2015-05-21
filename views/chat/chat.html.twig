@@ -1,0 +1,229 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Chat View{% endblock %}
+
+{% block css %}
+{{ parent() }}
+<link rel="stylesheet" href="/css/chat.css">
+<link rel="stylesheet" href="/css/header-after.css">
+{% endblock %}
+
+{% block content %}
+
+{% include "header-after.html.twig" %}
+
+<!-- TODO -->
+<div class="container" style="padding: 0;" >
+  <div class="row height-fill chat-box">
+    <!--Chat list-->
+    <div id="chat-lists"class="col-sm-2 height-fill">
+      {% include "/chat/chat_message_lists.html.twig" %}
+    </div><!--/Chat list-->
+
+    <!--Chat View-->
+    <div class="col-md-7 height-fill chat-view-wrapper">
+      <div  id="msg_box" class="row">
+        <textarea class="form-control msg-textarea" rows="4"></textarea>
+        <div >
+          <button id="open_videochat" class="btn glyphicon glyphicon-facetime-video" aria-hidden="true" style="top:10px; left:10px;" target="_blank" ></button>
+          <button id="ws-send" class="pull-right submit-msg btn btn-danger">Submit</button>
+        </div>
+      </div>
+      <div  id="chat-view" class="row">
+        <div id="msg-wrapper" class="col-md-12">
+        </div>
+      </div>
+    </div><!--ChatView-->
+
+    <!--Profile-->
+    <div class="col-sm-3 height-fill" style="background: rgba(255, 255, 255, 0.7); border-left: solid 1px #EEE;">
+      <div id="chat-profile" class="row">
+        <div class="profile-pic hidden" >
+          <a id="response-id" href="">
+            <img alt="" id="response-image_url" src="">
+          </a>
+        </div>
+        <div class="info hidden">
+          <div class="title">
+            <p class="profile-name" id="response-name"></p>
+          </div>
+          <p id="response-age"></p>
+          <p id="response-money"></p>
+          <span style="padding-left: 10px;">コメント</span>
+          <p id="response-description"></p>
+        </div>
+      </div>
+      <div class="row">
+        {% include "/chat/videochat.html.twig" %}
+      </div>
+    </div><!--Profile-->
+  </div><!--Chatbox-->
+</div><!--/Container-->
+{% include "/chat/modal.html.twig" %}
+{% endblock %}
+
+{% block js %}
+{{ parent() }}
+<script>
+  (function(){
+    var webSocket = null;
+
+    function open(message_list_id) {
+      var uri = "ws://meet-geeks-api.kaihar4.com/ws/" + message_list_id;
+      if (webSocket == null) {
+        webSocket = new WebSocket(uri);
+        webSocket.onmessage = onMessage;
+      }
+    }
+
+    function close() {
+      if (webSocket != null) {
+        webSocket.close();
+        webSocket = null;
+      }
+    }
+
+    function writeVideoRequest(json) {
+      $("#modal_body").html('<p>' + jsonobj["name"] + 'からビデオリクエストが届いています。</p>');
+      $("#submit_videorq").attr('broker_id',jsonobj["broker_id"]);
+      $("#modal").modal('show');
+    }
+
+    function writeMessage(json) {
+      jsonobj = JSON.parse(json);
+      var chats = $(".msg");
+      while (chats.length >= 100) {
+        chats = chats.last().remove();
+      }
+      $("#msg-wrapper").prepend('{% include "/chat/msg.html.twig" %}');
+      if (jsonobj["is_deliverdata"] && jsonobj["broker_id"] && jsonobj["id"] != {{ current_user["id"] }}) {
+        writeVideoRequest(json);
+      }
+    }
+
+    function onMessage(event) {
+      if (event && event.data) {
+        writeMessage(event.data);
+      }
+    }
+
+    function escapeHTML(body) {
+      return jQuery('<div>').text(body).html();
+    }
+
+    $(function(){
+      $(document).on('click', '.message-list', function(){
+        // Initialize a connection of WebSocket
+        $('#msg-wrapper').html("");
+        close();
+        open($('.active-chat').attr('message-list-id'));
+
+        // Initialize a profile
+        $.ajax({
+          type: "GET",
+          url: "/profiles/" + $('.active-chat').attr('companion-id'),
+        }).done(function(response) {
+          $(".profile-pic").removeClass("hidden");
+          $(".info").removeClass("hidden");
+          $("#response-id").attr("href","/profiles/show/" + response.id);
+          $("#response-image_url").attr("src",escapeHTML(response.image_url));
+          $("#response-name").text(response.name);
+          $("#response-age").text("年齢：" + response.age + "歳");
+          $("#response-money").text("年収：" + response.money + "万円");
+          $("#response-description").text(response.description);
+        });
+      });
+
+      $(document).on('click', '#ws-send', function(){
+        var message = $(".msg-textarea").val();
+        if (message && webSocket) {
+          webSocket.send('{"body": "'+ message + '", "id": "{{ current_user["id"] }}", "name": "{{ current_user["name"] }}", "image_url": "{{ current_user["image_url"] }}", "created_at": "' + new Date() + '"}');
+          $(".msg-textarea").val("");
+        }
+      });
+
+      //submit video request
+      $(document).ready(function(){
+        var my_stream; //相手に渡す自分の映像
+        var broker_id; //送信側のブローカーid
+        var peer;
+        //webRTCの表示
+        //@params call_user call側（ビデオリクエスト受信側）:true callされる側:false
+        function showWebRTC(call_user) {
+          navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+          navigator.getUserMedia({audio: true, video: true}, function(stream){
+            my_stream = stream;
+            if (call_user) {
+              callPartner();
+            }
+          }, function(){});
+        }
+
+        function callPartner() {
+          var call = peer.call($('#submit_videorq').attr('broker_id'), my_stream);
+          call.on('stream', function(stream){
+            $('#partner-video').prop('src', URL.createObjectURL(stream));
+          });
+        }
+
+        //ビデオリクエスト・メッセージをwebSoket慶友で送信
+        function sendMessage() {
+          console.log(broker_id);
+          if (broker_id && webSocket) {
+            webSocket.send('{"broker_id":"' + broker_id + '", "body": "{{ current_user["name"] }}さんがビデオリクエストを送りました", "id": "{{ current_user["id"] }}", "name": "{{ current_user["name"] }}", "image_url": "{{ current_user["image_url"] }}", "created_at": "' + new Date() + '"}');
+          } else {
+            console.log("ERROR webRTC websocket");
+          }
+        }
+
+        function initPeer() {
+          peer = new Peer({key: '5c95296f-f95d-401b-ba93-69f53afda44c'}); //skyway api key
+          peer.on('open', function(id){
+            console.log(id);
+            broker_id = id;
+          });
+
+          peer.on('error', function(e){
+            console.log(e.message);
+          });
+
+          peer.on('call', function(call){
+            call.answer(my_stream);
+            call.on('stream', function(stream){
+              $('#partner-video').prop('src', URL.createObjectURL(stream));
+            });
+          });
+        }
+
+        $(document).on('click', '#video_close', function(){
+          $('#chat_view').hide();
+          if (!peer.destroyed) {
+            peer.destroy();
+          }
+        });
+
+        $(document).on('click',"#open_videochat", function() {
+          if ($('.active-chat').attr('companion-id')) {
+            initPeer();
+            showWebRTC(false);
+            $('#chat_view').show();
+            sendMessage();
+          }
+        });
+
+        $(document).on('click', '#submit_videorq', function(){
+          initPeer();
+          showWebRTC(true);
+          $('#chat_view').show();
+        });
+      });
+    });
+  })();
+</script>
+
+<!-- Dropdown login
+<script src="/js/dropdown-login.js"></script> -->
+
+<!-- Add n Remove active-chat. -->
+<script src="/js/toggle-active.js"></script>
+{% endblock %}

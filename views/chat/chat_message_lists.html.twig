@@ -1,0 +1,7 @@
+{% block chat_message_lists %}
+<ul class="media-list">
+  {% for message_list in message_lists %}
+    {% include "/chat/chat_message_list.html.twig" %}
+  {% endfor %}
+</ul>
+{% endblock %}

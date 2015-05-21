@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".dropdown-menu").find("p").click(function(n){n.stopPropagation()})});

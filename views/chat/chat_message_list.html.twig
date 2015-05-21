@@ -1,0 +1,12 @@
+{% block chat_message_list %}
+<li class="message-list media" message-list-id="{{ message_list['id']|e }}" companion-id="{{ message_list['companion']['id']|e }}">
+<div class="media-left">
+  <a href="#">
+    <img class="media-object" src="{{ message_list["companion"]["image_url"]|e }}" alt="...">
+  </a>
+</div>
+<div class="media-body">
+  <h4 class="media-heading">{{ message_list["companion"]["name"]|e }}</h4>
+</div>
+</li>
+{% endblock %}

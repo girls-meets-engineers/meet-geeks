@@ -1,0 +1,1 @@
+!function(){var e;navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia,navigator.getUserMedia({audio:!0,video:!0},function(a){e=a,$("#video").prop("src",URL.createObjectURL(a))},function(){})}();

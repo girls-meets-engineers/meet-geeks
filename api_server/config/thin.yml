@@ -1,0 +1,8 @@
+pid: /tmp/api_server.pid
+log: logs/thin.log
+servers: 1
+port: 4444
+daemonize: true
+environment: production
+user: root
+group: root

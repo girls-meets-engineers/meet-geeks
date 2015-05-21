@@ -1,0 +1,23 @@
+#hero,body{width:100%}
+.hero-message,.whyitworks{text-align:center;font-family:Merriweather,serif}
+.hero-message,.steps,.whyitworks,h2,h3{text-align:center}
+body{margin:0;font-size:14px;background:#FFF}
+.dropdown{display:inline-block;margin-left:640px}
+#hero{background:url(/images/dot.png),url(/images/top_bg1.jpg);background-size:2px,cover;margin-top:-135px;z-index:0;position:relative}
+.signup-well{width:980px;height:330px;position:absolute;top:0!important;right:0;bottom:0;left:0;margin:auto;padding-top:50px}
+.hero-message{color:#FFF;font-size:40px;padding:30px 30px 20px;margin:0}
+#wrapper,button.register{margin:0 auto;position:relative}
+button.register{display:block;top:0;padding:10px 20px}
+#wrapper{width:100%;background:#FFF;box-shadow:0 -1px 5px 0 rgba(0,0,0,.2);z-index:100}
+.container{margin:0 auto 100px}
+.whyitworks{color:#444;margin:80px 0 70px;line-height:45px}
+.steps{font-size:65px;font-family:serif;color:#d9534f}
+.description-of-step{font-size:16px;line-height:1.5;color:#999;text-align:center}
+h1,p{text-align:left}
+#scroll{width:1650px;display:block;margin-top:150px}
+h1{padding-top:10px;color:#DDD;font-size:39px}
+h2{color:#dc143c}
+h3{color:#666;margin-top:10px;margin-bottom:20px;font-size:22px;font-weight:400}
+img{margin:0 auto}
+li{cursor:pointer}
+#hoge{width:700px}

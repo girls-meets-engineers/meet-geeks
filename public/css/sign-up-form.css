@@ -1,0 +1,12 @@
+.sign-up-form{background:rgba(0,0,0,.2);width:500px;height:100px;padding:30px 30px 30px 70px;margin:0 auto}
+.easy-select-box{background:#fffdf4;border:2px solid #EEE;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;text-align:left;font-size:17px;color:#444;outline:0;opacity:.8;display:inline-block;margin:0 18px}
+.easy-select-box .esb-displayer{background:url(/images/select-box-arrow.png)120px no-repeat;color:#444;cursor:default;height:40px;line-height:30px;padding:0 0 0 10px;width:146px;text-align:left;vertical-align:middle;display:table-cell}
+.easy-select-box .esb-displayer:hover{filter:alpha(opacity=80);-ms-filter:'alpha(opacity=80)';opacity:.8}
+.easy-select-box:hover .esb-displayer{text-decoration:none}
+.easy-select-box.disabled .esb-displayer,.easy-select-box:hover.disabled .esb-displayer{background-position:0 -36px}
+.easy-select-box .esb-dropdown{background:#fff;display:none;max-height:200px;overflow:auto;margin-top:7px;width:144px!important;position:absolute;z-index:999}
+.i-am-a,.submit-button{position:relative;display:inline-block}
+.easy-select-box .esb-item{padding:0;background:#fffdf4;color:#444;cursor:default;opacity:.8}
+.easy-select-box .esb-item:hover{background:#d2ba85;color:#FFF;text-decoration:none}
+.i-am-a{color:#FFF;font-size:25px;margin-bottom:0;top:-10px}
+.submit-button{top:-18px;height:45px;width:130px}

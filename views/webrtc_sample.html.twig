@@ -1,0 +1,55 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}WebRTC Sample{% endblock %}
+
+{% block css %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<input type="text" id="destination-id" placeholder="Enter the destination id" />
+<button id="call">Call</button>
+<video id="video" autoplay muted></video>
+<video id="partner-video" autoplay></video>
+{% endblock %}
+
+{% block js %}
+{{ parent() }}
+<script src="https://skyway.io/dist/0.3/peer.js"></script>
+<script>
+  (function(){
+    var my_stream;
+    var peer = new Peer({key: '5c95296f-f95d-401b-ba93-69f53afda44c'});
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.getUserMedia({audio: true, video: true}, function(stream){
+      my_stream = stream;
+      $('#video').prop('src', URL.createObjectURL(stream));
+    }, function(){});
+
+    peer.on('open', function(id){
+      console.log(id);
+    });
+
+    peer.on('error', function(e){
+      console.log(e.message);
+    });
+
+    peer.on('call', function(call){
+      call.answer(my_stream);
+      call.on('stream', function(stream){
+        $('#partner-video').prop('src', URL.createObjectURL(stream));
+      });
+    });
+
+    $(document).ready(function(){
+      $(document).on('click', '#call', function(){
+        var call = peer.call($('#destination-id').val(), my_stream);
+        call.on('stream', function(stream){
+          $('#partner-video').prop('src', URL.createObjectURL(stream));
+        });
+      });
+    });
+  })();
+</script>
+{% endblock %}

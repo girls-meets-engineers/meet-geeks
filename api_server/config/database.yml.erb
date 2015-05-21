@@ -1,0 +1,13 @@
+development:
+  adapter:   sqlite3
+  database:  db/development.sqlite3
+  reconnect: true
+  pool:      6
+
+production:
+  adapter:   mysql2
+  host:      <%= ENV["MYSQL_PORT_3306_TCP_ADDR"] %>
+  port:      3306
+  database:  gme
+  username:  root
+  password:

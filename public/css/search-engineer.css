@@ -1,0 +1,12 @@
+*{margin:0 auto}
+body,html{height:100%;background-image:url(/images/new-york2.jpg);background-attachment:fixed;background-size:cover}
+.container{width:980px;padding:20px}
+.fill{height:100%;background:rgba(255,255,255,.5)}
+.thumbnail a>img{border-radius:100%;padding:6px}
+.item{background-color:rgba(0,0,0,.2)}
+.search-view{padding:10px}
+.criteria-view{padding:10px 0 40px}
+.result-view{padding-top:20px}
+.picture-description{text-align:center;color:#FFF}
+.thumbnail{background:rgba(55,55,55,.3)}
+.img-responsive{width:100%}

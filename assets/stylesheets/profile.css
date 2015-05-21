@@ -1,0 +1,23 @@
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background: url(/images/new-york2.jpg);
+  background-size: cover;
+}
+
+#profile-wrapper {
+  background: rgba(255, 255, 255, 0.7);
+  margin: 15px auto;
+  padding: 25px;
+}
+
+.form-control {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.container {
+	width: 100%;
+	background: rgba(255, 255, 255, 0.1);
+}

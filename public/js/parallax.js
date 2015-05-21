@@ -1,0 +1,1 @@
+jQuery(function(){var o=$("#hero").offset().top;jQuery(window).scroll(function(){var r=$(this).scrollTop();jQuery("#hero").css("top",o+80+r/1.7)})});

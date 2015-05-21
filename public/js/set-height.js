@@ -1,0 +1,1 @@
+$(function(){var i=$(window).height();$(function(){$("#hero").css("height",i+130+"px"),$(".signup-well").css("top",i/2-10+"px")})});

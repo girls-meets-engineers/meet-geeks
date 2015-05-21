@@ -1,0 +1,29 @@
+#profile-header {
+  height: 200px;
+  margin-bottom: 10px;
+
+  #user-image {
+  }
+
+  #social-links {
+    position: relative;
+    top: 150px;
+  }
+}
+
+#inputMoney {
+  text-align: right;
+}
+
+#inputAge {
+  text-align: right;
+}
+
+.profile-suffix {
+  height: 34px;
+
+  p {
+    text-align: right;
+    line-height: 34px;
+  }
+}

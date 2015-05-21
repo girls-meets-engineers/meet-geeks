@@ -1,0 +1,5 @@
+#profile-header{height:200px;margin-bottom:10px}
+#profile-header #social-links{position:relative;top:150px}
+#inputAge,#inputMoney{text-align:right}
+.profile-suffix{height:34px}
+.profile-suffix p{text-align:right;line-height:34px}

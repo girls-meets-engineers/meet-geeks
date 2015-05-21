@@ -1,0 +1,29 @@
+<div id="top-header-content">
+  <img src="/images/logo.png" style="width: 230px; left: 40px; position: relative;" />
+  <div id="top-header-nav">
+    {% if current_user['is_engineer'] == false %}
+    <div>
+      <img src="/images/header/search.svg" style="width: 23px;" />
+      <a href="/search">Search</a>
+    </div>
+    {% endif %}
+    <div>
+      <img src="/images/header/messages.svg" style="width: 23px;" />
+      <a href="/chat">Messages</a>
+    </div>
+
+    <div class="dropdown">
+      <!-- ここが表示されるボタン <a>タグでもOK -->
+      <img src="{{ current_user['image_url']|e }}" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" />
+      <!-- ボタンここまで -->
+
+      <!-- ここはボタンを押すと表示されるリスト -->
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" style="width: 100%; color: #444;" tabindex="-1" href="/profiles/show/{{ current_user['id']|e }}">プロフィール</a></li>
+        <li role="presentation"><a role="menuitem" style="width: 100%; color: #444;" tabindex="-1" href="/logout">ログアウト</a></li>
+      </ul>
+      <!-- リストここまで -->
+    </div>
+
+  </div> <!-- /top-header-nav -->
+</div> <!-- /top-header-content -->

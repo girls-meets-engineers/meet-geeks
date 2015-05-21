@@ -1,0 +1,96 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Search Engineer{% endblock %}
+
+{% block css %}
+{{ parent() }}
+<link rel="stylesheet" href="/css/search-engineer.css">
+<link rel="stylesheet" href="/css/header-after.css">
+{% endblock %}
+
+{% block content %}
+
+{% include "header-after.html.twig" %}
+
+<html>
+  <body>
+
+    <!-- main contents -->
+    <div class="container fill">
+
+      <!-- search window -->
+      <div class="row search-view">
+        <div class="col-md-12" style="display: none;">
+          <input type="text" class="shuffle-search form-control" placeholder="Search for...">
+        </div>
+      </div>
+
+      <!-- sort riteria -->
+      <div class="row criteria-view">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <select class="sort-options form-control">
+              <option value="">Default</option>
+              <option value="name">Name(Desc)</option>
+              <option value="age">Age(Desc)</option>
+              <option value="money">Salary(Desc)</option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              Age <span class="caret"></span>
+            </button>
+            <ul class="fillter-list-age dropdown-menu" role="menu">
+              <li data-age="10"><a>10s</a></li>
+              <li data-age="20"><a>20s</a></li>
+              <li data-age="30"><a>30s</a></li>
+              <li data-age="40"><a>40s</a></li>
+              <li data-age="50"><a>50s</a></li>
+              <li data-age="60"><a>60s</a></li>
+              <li class="divider"></li>
+              <li data-age="all" class="active"><a>All</a></li>
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              Salary <span class="caret"></span>
+            </button>
+            <ul class="fillter-list-money dropdown-menu" role="menu">
+              <li data-money="300"><a>¥300万円〜</a></li>
+              <li data-money="500"><a>¥500万円〜</a></li>
+              <li data-money="700"><a>¥700万円〜</a></li>
+              <li data-money="1000"><a>¥1000万円〜</a></li>
+              <li data-money="1500"><a>¥1500万円〜</a></li>
+              <li data-money="3000"><a>¥3000万円〜</a></li>
+              <li data-money="5000"><a>¥5000万円〜</a></li>
+              <li data-money="10000"><a>¥1億円〜</a></li>
+              <li class="divider"></li>
+              <li data-money="all" class="active"><a>All</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- result list -->
+      <div id="grid" class="row result-view">
+        {% for engnr in engnrs %}
+        {% include "/search/engineer_list.html.twig" %}
+        {% endfor %}
+      </div>
+
+    </div> <!-- main contents -->
+
+    <!-- footer -->
+    <div style="width: 100%; height: 50px; background: #000000;">
+    </div>
+  </body>
+</html>
+
+{% endblock %}
+
+{% block js %}
+{{ parent() }}
+<script src="/js/search-engineer.js"></script>
+<script src="/js/jquery.shuffle.modernizr.min.js"></script>
+<script src="/js/jquery.shuffle.min.js"></script>
+{% endblock %}
